@@ -1,7 +1,7 @@
 # captchakiller-python
 
 ## Installation
-`pip install captchakiller`
+`pip install captchakiller-python`
 
 ## Usage
 ### Import the CaptchaKiller class
