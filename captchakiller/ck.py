@@ -15,7 +15,7 @@ class UserManager:
             return response
         else:
             response.update({"success": False})
-            return {"errorId": "0", "error": "Unknown error"}
+            return {"errorId":0, "error": "Unknown error"}
 
 class CaptchaKiller:
     
@@ -54,7 +54,7 @@ class CaptchaKiller:
             return response
         else:
             response.update({"success": False})
-            return {"errorId": "0", "error": "Unknown error"}
+            return {"errorId":0, "error": "Unknown error"}
         
     def recaptcha_v2_enterprise(self, sitekey, site, gdomain=False, invisible=False, payload=None, action=None):
         url = self.SOLVE_ENDPOINT + 'solvev2e'
@@ -78,7 +78,7 @@ class CaptchaKiller:
             return response
         else:
             response.update({"success": False})
-            return {"errorId": "0", "error": "Unknown error"}
+            return {"errorId":0, "error": "Unknown error"}
         
     def recaptcha_v3_low_score(self, sitekey, site, action, gdomain=False):
         url = self.SOLVE_ENDPOINT + 'solvev3ls'
@@ -100,4 +100,26 @@ class CaptchaKiller:
             return response
         else:
             response.update({"success": False})
-            return {"errorId": "0", "error": "Unknown error"}
+            return {"errorId":0, "error": "Unknown error"}
+    def funcaptcha(self, publickey, site, surl=None, datatype=None, data=None):
+        url = self.SOLVE_ENDPOINT + 'solveark'
+        
+        queryparams = {
+            'publickey': publickey,
+            'site': site,
+            'surl': surl,
+            'datatype': datatype,
+            'data': data,
+        }
+        
+        response = _send_request(self, url, queryparams, {})
+        
+        if 'error' in response:
+            response.update({"success": False})
+            return response
+        elif 'result' in response:
+            response.update({"success": True})
+            return response
+        else:
+            response.update({"success": False})
+            return {"errorId":0, "error": "Unknown error"}
