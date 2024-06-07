@@ -12,7 +12,7 @@ setuptools.setup(
     version = getversion(),
     author = "captchakiller",
     author_email = "support@captchakiller.net",
-    description = "CaptchaKiller Python API Client Library, for solving captchas. Fast Recaptcha Captcha Solver",
+    description = "CaptchaKiller Python API Client Library, for solving captchas. Fast Recaptcha, funcaptcha, mtcaptcha Captcha Solver",
     long_description = long_description,
     long_description_content_type = "text/markdown",
     url = "https://github.com/captchakillernet/captchakiller-python",
