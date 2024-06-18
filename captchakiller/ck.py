@@ -143,3 +143,21 @@ class CaptchaKiller:
         else:
             response.update({"success": False})
             return {"errorId":0, "error": "Unknown error"}
+    def textcaptcha(self, base64img):
+        url = self.SOLVE_ENDPOINT + 'solveimg'
+        
+        queryparams = {
+            'body': base64img,
+        }
+        
+        response = _send_request(self, url, queryparams, {})
+        
+        if 'error' in response:
+            response.update({"success": False})
+            return response
+        elif 'result' in response:
+            response.update({"success": True})
+            return response
+        else:
+            response.update({"success": False})
+            return {"errorId":0, "error": "Unknown error"}
